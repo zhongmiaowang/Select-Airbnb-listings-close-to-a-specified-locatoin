@@ -18,10 +18,22 @@ dataframe = pd.read_csv(
         "Location",
     ],
 )
+st.write("")
+form = st.form(key="form_settings")
+col1, col2, col3 = form.columns([3, 1, 1])
+
+highest_price = col1.text_input(
+    "Highest Price",
+    key="price",
+)
+radius = col2.text_input(
+    "Largest Redius",
+    key="Meters from chosen location",
+)
 
 # We have a limited budget, therefore we would like to exclude
 # listings with a price above 100 pounds per night
-dataframe = dataframe[dataframe["Price"] <= 100]
+dataframe = dataframe[dataframe["Price"] <= highest_price]
 
 # Display as integer
 dataframe["Airbnb Listing ID"] = dataframe["Airbnb Listing ID"].astype(int)
