@@ -31,9 +31,11 @@ radius = col2.text_input(
     key="Meters from chosen location",
 )
 
+form.form_submit_button(label="Submit")
+
 # We have a limited budget, therefore we would like to exclude
 # listings with a price above 100 pounds per night
-dataframe = dataframe[dataframe["Price"] <= highest_price]
+dataframe = dataframe[dataframe["Price"] <= highest_price and datafram["Meters from chosen location"] <= radius]
 
 # Display as integer
 dataframe["Airbnb Listing ID"] = dataframe["Airbnb Listing ID"].astype(int)
